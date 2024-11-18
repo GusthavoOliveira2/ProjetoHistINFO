@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: rgb(172, 167, 167);
+        }
+
+        header {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border: solid white 2px;
+        }
+
+        nav {
+            background-color: black;
+            padding: 10px 0;
+            border: solid white 2px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav li {
+            margin: 0 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: block;
+        }
+
+        nav a:hover {
+            background-color: #333;
+            border-radius: 4px;
+        }
+
+        .box {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: gray;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .botao {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgb(10, 175, 10);
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            color: whitesmoke;
+        }
+
+        .botaofor {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgb(10, 175, 10);
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            color: whitesmoke;
+        }
+
+        .botao2 {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            color: whitesmoke;
+            background-color: rgb(221, 19, 4);
+        }
+
+        .titulo {
+            text-align: center;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(179, 179, 179, 0.829);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .box2 {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgb(195, 188, 188);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .grid-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .left-column,
+        .right-column {
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: rgb(43, 43, 43);
+            text-align: left;
+        }
+
+        .left-column {
+            flex: 1;
+            max-width: 350px;
+        }
+
+        .right-column {
+            flex: 2;
+            max-width: 400px;
+            /* Definindo uma largura fixa para a coluna */
+        }
+
+        .image-container {
+            text-align: center;
+        }
+
+        .image-container img {
+            width: 300px;
+            height: 300px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .alinhar {
+            text-align: center;
+            margin: 10px;
+        }
+
+        .box59 {
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            background-color: rgb(43, 43, 43);
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        .semimagem {
+            color: #ff0000;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #f8d7da;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .semforuns {
+            color: #ff0000;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #f8d7da;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            text-align: center;
+        }
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .form-footer a {
+            background-color: #ccc;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .form-footer a:hover {
+            background-color: #999;
+        }
+        .login-button {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            background-color: rgb(10, 175, 10);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .login-button:hover {
+            background-color: rgb(0, 150, 0);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>SITE SOBRE A HISTÓRIA DA INFORMÁTICA</h1>
+         <a href="{% url 'login' %}" class="login-button">Login</a>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/">PÁGINA PRINCIPAL</a></li>
+            <li><a href="/historiainformatica/">HISTÓRIA DA INFORMÁTICA</a></li>
+            <li><a href="/forum/">FÓRUNS</a></li>
+        </ul>
+    </nav>
+    <br>
+    <div class="alinhar">
+        <a href="{% url 'criar_forum' %}" class="botao">Criar Novo Fórum</a>
+    </div>
+    <br>
+    <div class="box">
+        <div class="box59">
+            {% if foruns %}
+                {% for forum in foruns %}
+                <div class="box59">
+                    <h2 class="titulo">{{ forum.nome }}</h2>
+                    <div class="grid-container">
+                        <div class="left-column">
+                            <p class="box2"><strong>USUÁRIO:</strong> {{ forum.usuario.username }}</p>
+                            <p class="box2"><strong>TOPICO:</strong> {{ forum.topico }}</p>
+                            <br>
+                            <br>
+                            <p class="box2"><strong>Início:</strong> {{ forum.datainicio }}</p>
+                            <p class="box2"><strong>Término:</strong> {{ forum.datatermino }}</p>
+                            <br>
+                        </div>
+
+                        <div class="right-column">
+                            <p class="box2"><strong>Proposta:</strong> {{ forum.proposta }}</p>
+                            <div class="image-container">
+                                {% if forum.imagem %}
+                                <img src="{{ forum.imagem.url }}" alt="Imagem do Fórum">
+                                {% else %}
+                                <br>
+                                <br>
+                                <p class="semimagem">Sem imagem disponível</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <form action="{% url 'apagar_forum' forum.id %}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="botao2"><strong>Apagar Fórum</strong></button>
+                    </form>
+                    <a href="{% url 'editar_forum' forum.id %}" class="botao">Editar Fórum</a>
+                    <a href="{% url 'comentar_forum' forum.id %}" class="botaofor">Comentar</a>
+                    <a href="{% url 'responder_forum' forum.id %}" class="botaofor">Responder</a>
+
+                    <br><br>
+                    <div class="box59">
+                        <h4 class="box">COMENTÁRIOS:</h4>
+                        {% for comentario in forum.comentarios.all %}
+                        <p class="box2">{{ comentario.usuario.username }}: {{ comentario.texto }} ({{ comentario.data_criacao }})</p>
+                        <form action="{% url 'apagar_comentario' comentario.id %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="botao2"><strong>Apagar Comentário</strong></button>
+                        </form>
+                        <form action="{% url 'editar_comentario' comentario.id %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="botao"><strong>Editar Comentario</strong></button>
+                        </form>
+                        {% empty %}
+                        <p class="box2">Sem comentários ainda.</p>
+                        {% endfor %}
+
+                        <h4 class="box">RESPOSTAS:</h4>
+                        {% for resposta in forum.respostas.all %}
+                        <p class="box2">{{ resposta.usuario.username }}: {{ resposta.texto }} ({{ resposta.data_criacao }})</p>
+                        <div class="box2">
+                            {% if resposta.imagem %}
+                            <img src="{{ resposta.imagem.url }}" alt="Imagem da Resposta" style="width: 200px; height: auto;" />
+                            {% else %}
+                            <p class="semimagem">Sem imagem disponível</p>
+                            {% endif %}
+                        </div>
+                        <form action="{% url 'apagar_resposta' resposta.id %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="botao2"><strong>Apagar Resposta</strong></button>
+                        </form>
+                        <form action="{% url 'editar_resposta' resposta.id %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="botao"><strong>Editar Resposta</strong></button>
+                        </form>
+                        {% empty %}
+                        <p class="box2">Sem respostas ainda.</p>
+                        {% endfor %}
+                        <hr>
+                    </div>
+                </div>
+                <hr>
+                {% endfor %}
+            {% else %}
+                <div class="semforuns">
+                    Não há fóruns disponíveis no momento.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+
+</html>

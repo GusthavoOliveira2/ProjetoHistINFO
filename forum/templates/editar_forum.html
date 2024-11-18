@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Fórum</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: rgb(172, 167, 167);
+        }
+
+        header {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border: solid white 2px;
+        }
+
+        nav {
+            background-color: black;
+            padding: 10px 0;
+            border: solid white 2px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav li {
+            margin: 0 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: block;
+        }
+
+        nav a:hover {
+            background-color: #333;
+            border-radius: 4px;
+        }
+
+        .box {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .box2 {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: rgb(133, 133, 133);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .input-container {
+            max-width: 700px;
+            margin: 10px auto;
+            text-align: left;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        textarea,
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        textarea {
+            height: 150px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .botao {
+            background-color: rgb(10, 175, 10);
+            color: white;
+            border: none;
+            margin: 10px 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        .botao:hover {
+            background-color: rgb(0, 150, 0);
+        }
+
+        .botao2 {
+            background-color: rgb(221, 19, 4);
+            width: 100%;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            color: whitesmoke;
+            margin: 10px 0;
+            border: none;
+            font-size: 16px;
+        }
+
+        .botao2:hover {
+            background-color: rgb(180, 0, 0);
+        }
+
+        .titulo {
+            text-align: center;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(179, 179, 179, 0.829);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .form-footer a {
+            background-color: #ccc;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .form-footer a:hover {
+            background-color: #999;
+        }
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .form-footer a {
+            background-color: #ccc;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .form-footer a:hover {
+            background-color: #999;
+        }
+        .login-button {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            background-color: rgb(10, 175, 10);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .login-button:hover {
+            background-color: rgb(0, 150, 0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>SITE SOBRE A HISTÓRIA DA INFORMÁTICA</h1>
+        <a href="login/" class="login-button">Login</a>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/">PÁGINA PRINCIPAL</a></li>
+            <li><a href="/historiainformatica/">HISTÓRIA DA INFORMÁTICA</a></li>
+            <li><a href="/forum/">FÓRUNS</a></li>
+        </ul>
+    </nav>
+    <h1 class="box2">Editar Fórum: {{ forum.nome }}</h1>
+    <div class="box">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <div class="input-container">
+                <label for="id_nome">Nome do Fórum:</label>
+                <input type="text" id="id_nome" name="nome" value="{{ forum.nome }}" required>
+            </div>
+
+
+            <div class="input-container">
+                <label for="id_topico">Tópico:</label>
+                <input type="text" id="id_topico" name="topico" value="{{ forum.topico }}" required>
+            </div>
+
+            <div class="input-container">
+                <label for="id_datatermino">Data de Término:</label>
+                <input type="datetime-local" id="id_datatermino" name="datatermino" value="{{ forum.datatermino }}" required>
+            </div>
+
+            <div class="input-container">
+                <label for="id_proposta">Proposta:</label>
+                <textarea id="id_proposta" name="proposta" required>{{ forum.proposta }}</textarea>
+            </div>
+
+ 
+            <div class="input-container">
+                <label for="id_imagem">Imagem (opcional):</label>
+                <input type="file" id="id_imagem" name="imagem">
+            </div>
+
+            <button type="submit" class="botao">Salvar Alterações</button>
+        </form>
+
+        <br>
+        <a href="{% url 'forum_list' %}" class="botao2">Voltar para a Lista de Fóruns</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comentar Fórum</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: rgb(172, 167, 167);
+        }
+
+        header {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border: solid white 2px;
+        }
+
+        nav {
+            background-color: black;
+            padding: 10px 0;
+            border: solid white 2px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav li {
+            margin: 0 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: block;
+        }
+
+        nav a:hover {
+            background-color: #333;
+            border-radius: 4px;
+        }
+
+        .box {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .box2 {
+            padding: 20px;
+            background-color: rgb(195, 188, 188);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .label {
+            margin-bottom: 10px;
+            display: block;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            margin-bottom: 15px;
+            font-size: 16px;
+            height: 120px;
+        }
+
+        .botao, .botao2, .botao3 {
+            width: 100%;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            color: whitesmoke;
+            margin: 10px 0;
+            border: none;
+            font-size: 16px;
+        }
+
+        .botao {
+            background-color: rgb(10, 175, 10);
+        }
+
+        .botao2 {
+            background-color: rgb(221, 19, 4);
+        }
+
+        .botao3 {
+            background-color: rgb(92, 89, 89);
+        }
+
+        .botao:hover, .botao2:hover, .botao3:hover {
+            opacity: 0.9;
+        }
+
+        .titulo {
+            text-align: center;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(179, 179, 179, 0.829);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        div {
+            text-align: center;
+        }
+        .login-button {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            background-color: rgb(10, 175, 10);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .login-button:hover {
+            background-color: rgb(0, 150, 0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>SITE SOBRE A HISTÓRIA DA INFORMÁTICA</h1>
+        <a href="{% url 'login' %}" class="login-button">Login</a>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/">PÁGINA PRINCIPAL</a></li>
+            <li><a href="/historiainformatica/">HISTÓRIA DA INFORMÁTICA</a></li>
+            <li><a href="/forum/">FÓRUNS</a></li>
+        </ul>
+    </nav>
+    
+    <h2 class="titulo">Comentar no Fórum: {{ forum.nome }}</h2>
+    
+    <div class="box">
+        <form method="POST">
+            <div class="box2">
+                {% csrf_token %}
+                
+                <label class="label" for="id_texto">Texto do Comentário</label>
+                <textarea name="texto" id="id_texto" required aria-setsize="40"></textarea>
+            </div>
+            
+            <button type="submit" class="botao">Comentar</button>
+            <button type="reset" class="botao2">Limpar</button>
+        </form>
+
+        <br>
+        <a href="{% url 'forum_list' %}" class="botao3">Voltar para a Lista de FÓRUNS</a>
+    </div>
+</body>
+</html>
